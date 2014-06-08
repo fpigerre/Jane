@@ -12,6 +12,9 @@ public class Panic extends Module {
         acceptedInput.add("panic");
     }
 
+    /**
+     * Executes a panic sequence
+     */
     public static void execute() {
         // TODO Add deletion of general cached files
         // TODO Add initiation of computer wipe sequence

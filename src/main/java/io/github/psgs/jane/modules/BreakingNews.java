@@ -28,6 +28,10 @@ public class BreakingNews extends Module {
         acceptedInput.add("news");
     }
 
+    /**
+     * Schedules a task to check for @BreakingNews tweets every 5 minutes
+     * @param args System arguments
+     */
     public static void main(String[] args) {
         if (Jane.twitterUsed) {
             ScheduledExecutorService ses = Executors.newScheduledThreadPool(1);
@@ -45,6 +49,9 @@ public class BreakingNews extends Module {
         }
     }
 
+    /**
+     * Executes a check for @BreakingNews tweets
+     */
     public static void execute() {
         if (Jane.twitterUsed) {
             try {

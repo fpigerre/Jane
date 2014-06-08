@@ -21,11 +21,14 @@ public class GoogleSearch extends Module {
         acceptedInput.add("google");
     }
 
-    public static void execute() {
+    /**
+     * Searches Google for results matching a certain string
+     * @param search Criteria to restrict the Google search to
+     */
+    public static void execute(String search) {
         String google = "http://www.google.com/search?q=";
-        String search = "stackoverflow";
         String charset = "UTF-8";
-        String userAgent = "Jane 1.0 (+http://psgs.tk)"; // Change this to your company's name and bot homepage!
+        String userAgent = "Jane 1.0 (+http://psgs.tk)"; // Company name and bot homepage
 
         try {
             int resultCount = 0;

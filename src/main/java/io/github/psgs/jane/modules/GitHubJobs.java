@@ -23,6 +23,10 @@ public class GitHubJobs extends Module {
         acceptedInput.add("get");
     }
 
+    /**
+     * Schedules a task to check for new jobs every 5 minutes
+     * @param args System arguments
+     */
     public static void main(String[] args) {
         ScheduledExecutorService ses = Executors.newScheduledThreadPool(1);
         ses.scheduleWithFixedDelay(new Runnable() {
@@ -38,6 +42,10 @@ public class GitHubJobs extends Module {
         }, 0, 5, TimeUnit.MINUTES);
     }
 
+    /**
+     * Checks for new GitHub jobs matching a certain criteria
+     * @param rawInput Criteria to restrict the job search to
+     */
     public static void execute(String rawInput) {
         String validatedInput = StringUtils.stripStringFromArray(rawInput, (String[]) acceptedInput.toArray());
         validatedInput.replace("jane", "");
@@ -68,6 +76,9 @@ public class GitHubJobs extends Module {
         }
     }
 
+    /**
+     * Executes a default GitHub job search, using parameters defined in settings.properties
+     */
     public static void execute() {
         try {
             for (JsonUtils.Job job : JsonUtils.getJobList("http://jobs.github.com/positions.json?&location=" + Settings.location)) {

@@ -25,6 +25,11 @@ public class ReadTweet extends Module {
         acceptedInput.add("recent");
     }
 
+    /**
+     * Reads a Tweet from a Tweet ID number
+     * @param tweetId The ID of the tweet to read
+     * @param textCommand An unused boolean to determine that the Tweet is being read using an ID number
+     */
     public static void execute(String tweetId, boolean textCommand) {
         if (Jane.twitterUsed) {
             try {
@@ -59,6 +64,10 @@ public class ReadTweet extends Module {
         }
     }
 
+    /**
+     * Reads a Tweet from a Status object
+     * @param status A Status object
+     */
     public static void execute(Status status) {
         if (Jane.twitterUsed) {
             String statusText = status.getUser().getName() + " " + StringUtils.removeUrl(status.getText());
@@ -81,6 +90,10 @@ public class ReadTweet extends Module {
         }
     }
 
+    /**
+     * Returns the ReadTweet module's Twitter object instance
+     * @return An instance of a Twitter object
+     */
     public static Twitter getTwitterInstance() {
         return twitter;
     }
@@ -90,6 +103,10 @@ public class ReadTweet extends Module {
         return acceptedInput;
     }
 
+    /**
+     * Reads a Tweet from an Author
+     * @param author An author's username (without an @ symbol)
+     */
     public void execute(String author) {
         if (Jane.twitterUsed) {
             try {
