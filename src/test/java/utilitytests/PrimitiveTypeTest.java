@@ -55,7 +55,7 @@ public class PrimitiveTypeTest {
                     if (suffixedInt.endsWith("th")) verify.testVerify();
             }
         }
-        verify(verify, atLeast(13)).testVerify();
+        verify(verify, atLeast(12)).testVerify();
     }
 
     @After
