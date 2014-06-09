@@ -26,7 +26,7 @@ public class BreakingNewsTest {
      * Attempts to find Twitter keys contained in the twitter4j.properties file and load them
      */
     @Before
-    public static void refreshTwitterKeys() {
+    public void refreshTwitterKeys() {
         try {
             if (new File("twitter4j.properties").exists()) {
                 BufferedReader bufferedReader = new BufferedReader(new FileReader("twitter4j.properties"));
