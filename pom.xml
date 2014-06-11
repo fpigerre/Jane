@@ -70,7 +70,7 @@
         <dependency>
             <groupId>org.twitter4j</groupId>
             <artifactId>twitter4j-core</artifactId>
-            <version>[4.0,)</version>
+            <version>LATEST</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -80,7 +80,7 @@
         <dependency>
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
-            <version>0.9.9-RC1</version>
+            <version>LATEST</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
