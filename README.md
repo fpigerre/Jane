@@ -1,4 +1,4 @@
-Jane  [![Build Status](https://travis-ci.org/psgs/Jane.png?branch=master)](https://travis-ci.org/psgs/Jane)    [![Coverage Status](https://coveralls.io/repos/psgs/Jane/badge.png)](https://coveralls.io/r/psgs/Jane)
+Jane  [![Build Status](https://travis-ci.org/psgs/Jane.png?branch=master)](https://travis-ci.org/psgs/Jane)    [![Coverage Status](https://coveralls.io/repos/psgs/Jane/badge.png)](https://coveralls.io/r/psgs/Jane)    [![Dependency Status](http://www.versioneye.com/user/projects/53982d2683add738da000016/badge.png)](http://www.versioneye.com/user/projects/53982d2683add738da000016)
 ========
 
 Jane is a computer voice-interface written in Java. She's based off IronMan's Jarvis and Robocop's voice interface.
