@@ -30,9 +30,9 @@ public class Jane {
     public static void main(String[] args) {
         // Set the console output to log.log
         try {
-            File output = new File("log.log");
+            File output = new File("syslog.log");
             if (!output.exists()) output.createNewFile();
-            PrintStream out = new PrintStream(new FileOutputStream("output.txt"));
+            PrintStream out = new PrintStream(new FileOutputStream("syslog.log"));
             System.setOut(out);
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -72,7 +72,11 @@ public class Jane {
             } catch (ArrayIndexOutOfBoundsException ex) {
                 System.err.println("My FLAC encoder has crashed! This is due to a bug that is currently out of my control.");
             } catch (Exception ex) {
-                ex.printStackTrace();
+                if (!ex.toString().contains("ArrayIndexOutofBoundsException")) {
+                    ex.printStackTrace();
+                } else {
+                    System.err.println("My FLAC encoder has crashed! This is due to a bug that is currently out of my control.");
+                }
             }
         } else {
             // If no internet connection is present, TTS may not be possible
@@ -113,8 +117,9 @@ public class Jane {
                 stringBuilder.append("# Jane's Settings - A project by psgs #\n");
                 stringBuilder.append("#######################################\n");
                 stringBuilder.append("\n");
-                stringBuilder.append("username = My Friend \n");
-                stringBuilder.append("location = earth");
+                stringBuilder.append("username = My Friend\n");
+                stringBuilder.append("location = earth\n");
+                stringBuilder.append("google-api-key = ");
                 bufferedWriter.write(stringBuilder.toString());
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -186,6 +191,7 @@ public class Jane {
 
     /**
      * Creates a new Twitter request token and opens a popup for the user to authenticate with Twitter
+     *
      * @throws Exception
      */
     public static void authenticateTwitter() throws Exception {
@@ -201,8 +207,9 @@ public class Jane {
 
     /**
      * Receives a Twitter pin string and stores it inside an AccessToken
-     * @param pin The pin received from Twitter
-     * @param accessToken The access token to save the pin with
+     *
+     * @param pin          The pin received from Twitter
+     * @param accessToken  The access token to save the pin with
      * @param requestToken The request token to attach to the access token
      */
     public static void sendPin(String pin, AccessToken accessToken, RequestToken requestToken) {
@@ -228,6 +235,7 @@ public class Jane {
 
     /**
      * Stores an access token for future use inside a twitter4j.properties file
+     *
      * @param accessToken The access token to save
      */
     private static void storeAccessToken(AccessToken accessToken) {

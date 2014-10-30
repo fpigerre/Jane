@@ -8,6 +8,10 @@ package io.github.psgs.jane.interfaces;
 
 import io.github.psgs.jane.utilities.Settings;
 
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+
 /**
  * @author Francois
  */
@@ -22,6 +26,7 @@ public class SettingsPanel extends javax.swing.JFrame {
     private javax.swing.JSeparator separator;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
+
     /**
      * Creates new form SettingsPanel
      */
@@ -82,26 +87,46 @@ public class SettingsPanel extends javax.swing.JFrame {
         locationLabel = new javax.swing.JLabel();
         locationField = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        headerLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        try {
+            Settings.loadConfiguration();
+        } catch (IOException ex) {
+            System.err.println("An IOException occurred while trying to load the configuration!");
+        }
+
+        headerLabel.setFont(new java.awt.Font("Arial", Font.BOLD, 18)); // NOI18N
         headerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         headerLabel.setText("Settings");
 
         usernameLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         usernameLabel.setText("Username");
-        usernameLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         usernameField.setToolTipText("Your name");
+        usernameField.setText(Settings.userName);
         usernameField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         saveButton.setText("Save");
         saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         locationLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         locationLabel.setText("Location");
+
+        locationField.setToolTipText("Your location");
+        locationField.setText(Settings.location);
+        usernameField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,8 +181,9 @@ public class SettingsPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        dispose();
         Settings.storeData("username", usernameField.getText());
+        Settings.storeData("location", locationField.getText());
+        dispose();
     }
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed

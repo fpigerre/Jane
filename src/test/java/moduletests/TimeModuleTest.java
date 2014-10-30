@@ -24,19 +24,22 @@ public class TimeModuleTest {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy/HH/mm/ss");
         Date date = new Date();
         String[] time = dateFormat.format(date).split("/");
-        String[] monthInt = time[1].split("0");
+        char[] monthChar = time[1].toCharArray();
+        int monthInt;
         String month;
-        if (monthInt[0].equals("0")) {
-            month = timeUtils.getMonthFromInt(Integer.parseInt(monthInt[1]));
+        if (monthChar[0] == '0') {
+            month = timeUtils.getMonthFromInt(Integer.parseInt(String.valueOf(monthChar[1])));
+            monthInt = Integer.valueOf("0" + String.valueOf(monthChar[1]));
         } else {
             month = timeUtils.getMonthFromInt(Integer.parseInt(time[1]));
+            monthInt = Integer.parseInt(time[1]);
         }
         try {
             AudioUtils.talk("It is currently the " + StringUtils.attachSuffix(Integer.parseInt(time[0])) + " of " + month + ", " + time[2]);
         } catch (FileNotFoundException ex) {
             System.out.println("The time couldn't be spoken!");
         }
-        assert Integer.parseInt(monthInt[1]) == TimeUtils.getMonthFromString(month);
+        assert monthInt == TimeUtils.getMonthFromString(month);
         verify(timeUtils, atLeastOnce()).getMonthFromInt(anyInt());
     }
 

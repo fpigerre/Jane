@@ -21,7 +21,7 @@ public class ConnectionTest {
 
     public boolean isConnected() {
         try {
-            URL url = new URL("http://google.com");
+            URL url = new URL("https://google.com");
             HttpURLConnection urlConnect = (HttpURLConnection) url.openConnection();
             return urlConnect.getResponseCode() == 200;
         } catch (IOException ex) {

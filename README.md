@@ -30,6 +30,8 @@ Jane uses Maven to compile her code.
 To compile Jane, [Apache Maven 3](http://maven.apache.org/) must be installed.
 She can then be copiled using ```mvn clean install```. Using ```mvn clean install -U``` will also update her dependencies.
 
+A Google API key can be obtained by following [several simple steps](http://www.chromium.org/developers/how-tos/api-keys).
+
 #### Unit Tests
 
 Jane's unit tests can be run using ```mvn test```.

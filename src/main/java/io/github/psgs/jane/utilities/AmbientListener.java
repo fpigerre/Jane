@@ -31,16 +31,16 @@ public class AmbientListener {
                     System.out.println("RECORDING...");
                     mic.captureAudioToFile(mic.getAudioFile());
                     do {
-                        Thread.sleep(1000);//Updates every second
+                        Thread.sleep(1000); // Updates every second
                     }
                     while (mic.getAudioVolume() > THRESHOLD);
                     System.out.println("Recording Complete!");
                     System.out.println("Recognizing...");
                     Recognizer rec = new Recognizer(Recognizer.Languages.AUTO_DETECT);
-                    //GoogleResponse response = rec.getRecognizedDataForWave(mic.getAudioFile(), 3);
-                    GSpeechDuplex duplex = new GSpeechDuplex(Settings.speechAPIKey);
+                    GoogleResponse response = rec.getRecognizedDataForWave(mic.getAudioFile(), 3);
+                    GSpeechDuplex duplex = new GSpeechDuplex(Settings.googleAPIKey);
                     FlacEncoder flacEncoder = new FlacEncoder();
-                    flacEncoder.convertWaveToFlac(new File("AudioSample.wav"), new File(mic.getAudioFile() + ".flac"));
+                    flacEncoder.convertWaveToFlac(mic.getAudioFile(), new File(mic.getAudioFile() + ".flac"));
                     duplex.addResponseListener(new GSpeechResponseListener() {
                         @Override
                         public void onResponse(GoogleResponse googleResponse) {

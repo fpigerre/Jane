@@ -23,10 +23,11 @@ public class GoogleSearch extends Module {
 
     /**
      * Searches Google for results matching a certain string
+     *
      * @param search Criteria to restrict the Google search to
      */
     public static void execute(String search) {
-        String google = "http://www.google.com/search?q=";
+        String google = "https://www.google.com/search?q=";
         String charset = "UTF-8";
         String userAgent = "Jane 1.0 (+http://psgs.tk)"; // Company name and bot homepage
 
@@ -39,7 +40,7 @@ public class GoogleSearch extends Module {
                     String url = link.absUrl("href"); // Google returns URLs in format "http://www.google.com/url?q=<url>&sa=U&ei=<someKey>".
                     url = URLDecoder.decode(url.substring(url.indexOf('=') + 1, url.indexOf('&')), "UTF-8");
 
-                    if (!url.startsWith("http")) {
+                    if (!url.startsWith("http") && !url.startsWith("https")) {
                         continue; // Ads/news/etc.
                     }
 
@@ -50,7 +51,8 @@ public class GoogleSearch extends Module {
                 }
             }
         } catch (IOException ex) {
-
+            System.err.println("An error occurred while attempting to search Google!");
+            System.out.println(ex.getMessage());
         }
     }
 

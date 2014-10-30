@@ -6,8 +6,8 @@ import java.util.Properties;
 public class Settings {
 
     public static String userName;
-    public static String speechAPIKey;
     public static String location;
+    public static String googleAPIKey;
 
     /**
      * Loads data from a settings.properties file
@@ -18,8 +18,8 @@ public class Settings {
         settings.load(new FileInputStream("settings.properties"));
 
         userName = settings.getProperty("username");
-        speechAPIKey = settings.getProperty("speech-api-key");
         location = settings.getProperty("location");
+        googleAPIKey = settings.getProperty("google-api-key");
     }
 
     /**
@@ -58,7 +58,9 @@ public class Settings {
             try {
                 Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("settings.properties"), "utf-8"));
                 writer.write(stringBuilder.toString());
+                writer.flush();
                 writer.close();
+                bufferedReader.close();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

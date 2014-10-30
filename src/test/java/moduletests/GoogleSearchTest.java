@@ -25,7 +25,7 @@ public class GoogleSearchTest {
     @Test
     public void search() {
         try {
-            String google = "http://www.google.com/search?q=";
+            String google = "https://www.google.com/search?q=";
             String search = "wikipedia";
             String charset = "UTF-8";
             String userAgent = "Jane 1.0 (+http://psgs.tk)"; // Change this to your company's name and bot homepage!
@@ -38,7 +38,7 @@ public class GoogleSearchTest {
                     String url = link.absUrl("href"); // Google returns URLs in format "http://www.google.com/url?q=<url>&sa=U&ei=<someKey>".
                     url = URLDecoder.decode(url.substring(url.indexOf('=') + 1, url.indexOf('&')), "UTF-8");
 
-                    if (!url.startsWith("http")) {
+                    if (!url.startsWith("http") && !url.startsWith("https")) {
                         continue; // Ads/news/etc.
                     }
 

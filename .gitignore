@@ -90,8 +90,11 @@ pip-log.txt
 # Sound Files
 AudioSample.wav
 AudioSample.flac
+AudioSample.wav.flac
 
+settings.properties
 twitter4j.properties
+syslog.log
 
 #############
 ## Gradle
