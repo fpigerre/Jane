@@ -15,7 +15,7 @@ Modules available by default include:
 - [ ] Panic - A module that will initiate a panic sequence when the user says "Panic, Panic, Panic"
 - [x] ReadTweet - A module that can read a tweet out loud
 - [x] Time - A module that speaks the current time
-- [ ] GitHub Jobs - Speaks Jobs available in the user's area that may interest him or her
+- [ ] GitHub Jobs - Speaks Jobs available in the user's area that may be of interest
 
 # Development
 
