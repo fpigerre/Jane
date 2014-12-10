@@ -11,10 +11,12 @@ Jane does use several Desktop and SystemTrayIcon classes which may be specific t
 Modules available by default include:
 
 - [x] BreakingNews - Will speak tweets by @BreakingNews as they are tweeted
+- [ ] Agence France Presse (AFP) - Will speak tweets by @AFP as they are tweeted
 - [x] Google Search - Speaks Google search results
 - [ ] Panic - A module that will initiate a panic sequence when the user says "Panic, Panic, Panic"
 - [x] ReadTweet - A module that can read a tweet out loud
-- [x] Time - A module that speaks the current time
+- [ ] Twitter Notifications
+- [x] Time - A module that speaks the current time and date
 - [ ] GitHub Jobs - Speaks Jobs available in the user's area that may be of interest
 
 # Development
