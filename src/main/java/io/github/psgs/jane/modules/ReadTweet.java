@@ -107,7 +107,7 @@ public class ReadTweet extends Module {
      * Reads a Tweet from an Author
      * @param author An author's username (without an @ symbol)
      */
-    public void execute(String author) {
+    public static void execute(String author) {
         if (Jane.twitterUsed) {
             try {
                 Query query = new Query("source:" + author);
@@ -135,7 +135,7 @@ public class ReadTweet extends Module {
                     }
                 }
             } catch (TwitterException ex) {
-                System.out.println("An error occurred while trying to fetch a tweet from an ID!");
+                System.out.println("An error occurred while trying to fetch a tweet from an author!");
                 ex.printStackTrace();
             }
         }
