@@ -16,14 +16,14 @@ import java.util.List;
 
 import static org.mockito.Mockito.validateMockitoUsage;
 
-public class BreakingNewsTest {
+public class TweetCheckTest {
 
     // Whether Twitter keys are loaded correctly
     static boolean validAccessToken = false;
     static boolean validAccessTokenSecret = false;
 
     /**
-     * Attempts to find Twitter keys contained in the twitter4j.properties file and load them
+     * Attempts to find Twitter keys contained in the twitter4j.properties file and loads them
      */
     @Before
     public void refreshTwitterKeys() {
@@ -60,11 +60,12 @@ public class BreakingNewsTest {
     }
 
     @Test
-    public void readBreakingTweet() {
+    public void readTweets() {
         if (validAccessToken && validAccessTokenSecret) {
             Twitter twitter = TwitterFactory.getSingleton();
             try {
                 List<Status> statuses = twitter.getUserTimeline("BreakingNews");
+                statuses.addAll(twitter.getUserTimeline("AFP"));
                 Date date = new Date(System.currentTimeMillis() - 305000);
                 for (Status status : statuses) {
                     if (status.getCreatedAt().after(date)) {

@@ -1,7 +1,7 @@
 package io.github.psgs.jane;
 
-import io.github.psgs.jane.modules.BreakingNews;
 import io.github.psgs.jane.modules.Module;
+import io.github.psgs.jane.modules.TweetCheck;
 import io.github.psgs.jane.utilities.StringUtils;
 import org.reflections.Reflections;
 
@@ -16,11 +16,12 @@ public class ModuleHandler {
             reflections.getSubTypesOf(Module.class);
 
     public static void runBackgroundModules(String[] args) {
-        BreakingNews.main(args);
+        TweetCheck.main(args);
     }
 
     /**
      * Initiates the execution of a module based on raw text input, deduced from speech
+     *
      * @param rawInput A TTS conversion of speech
      */
     public static void executeModule(String rawInput) {

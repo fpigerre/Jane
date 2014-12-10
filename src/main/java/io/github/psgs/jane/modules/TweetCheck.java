@@ -15,21 +15,25 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class BreakingNews extends Module {
+public class TweetCheck extends Module {
 
     public static List<String> acceptedInput = new ArrayList<String>();
     static Twitter twitter = ReadTweet.getTwitterInstance();
 
-    public BreakingNews() {
-        super("BreakingNews", "Reads breaking news from http://twitter.com/BreakingNews", 1, 3);
+    public TweetCheck() {
+        super("TweetCheck", "Reads tweets from a hardcoded list of accounts", 1, 3);
         acceptedInput.add("get");
         acceptedInput.add("read");
         acceptedInput.add("breaking");
         acceptedInput.add("news");
+        acceptedInput.add("afp");
+        acceptedInput.add("agence");
+        acceptedInput.add("france");
+        acceptedInput.add("presse");
     }
 
     /**
-     * Schedules a task to check for @BreakingNews tweets every 5 minutes
+     * Schedules a task to check for tweets every 5 minutes
      * @param args System arguments
      */
     public static void main(String[] args) {
@@ -45,17 +49,18 @@ public class BreakingNews extends Module {
                         ex.printStackTrace();
                     }
                 }
-            }, 0, 5, TimeUnit.MINUTES);
+            }, 0, 3, TimeUnit.MINUTES);
         }
     }
 
     /**
-     * Executes a check for @BreakingNews tweets
+     * Executes a check for @BreakingNews and @AFP tweets
      */
     public static void execute() {
         if (Jane.twitterUsed) {
             try {
                 List<Status> statuses = twitter.getUserTimeline("BreakingNews");
+                statuses.addAll(twitter.getUserTimeline("AFP"));
                 Date date = new Date(System.currentTimeMillis() - 305000);
                 for (Status status : statuses) {
                     if (status.getCreatedAt().after(date)) {
