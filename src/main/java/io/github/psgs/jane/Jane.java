@@ -1,5 +1,6 @@
 package io.github.psgs.jane;
 
+import edu.cmu.sphinx.api.Configuration;
 import io.github.psgs.jane.interfaces.SystemTrayIcon;
 import io.github.psgs.jane.interfaces.TwitterPopup;
 import io.github.psgs.jane.utilities.*;
@@ -29,14 +30,14 @@ public class Jane {
 
     public static void main(String[] args) {
         // Set the console output to log.log
-        try {
+        /*try {
             File output = new File("syslog.log");
             if (!output.exists()) output.createNewFile();
             PrintStream out = new PrintStream(new FileOutputStream("syslog.log"));
             System.setOut(out);
         } catch (IOException ex) {
             ex.printStackTrace();
-        }
+        }*/
 
         // Create a new TrayIcon
         trayIcon = new SystemTrayIcon();
@@ -242,9 +243,6 @@ public class Jane {
         try {
             File storeFile = new File("twitter4j.properties");
             if (!storeFile.exists()) storeFile.createNewFile();
-
-            Properties settings = new Properties();
-            settings.load(new FileInputStream("twitter4j.properties"));
 
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("debug=false\n");
