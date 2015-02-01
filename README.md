@@ -43,7 +43,7 @@ Jane also uses [Coveralls](https://coveralls.io/r/psgs/Jane) to track test cover
 
 Jane uses a multitude of dependencies, including:
 
-* [The-Shadow's Java-Speech-API](https://github.com/The-Shadow/java-speech-api)
+* [CMU Sphinx](http://cmusphinx.sourceforge.net/)
 * [GTranslate](https://code.google.com/p/java-google-translate-text-to-speech/)
 * [Java Flac Encoder](http://javaflacencoder.sourceforge.net/)
 * [JLayer, by JavaZoom](http://www.javazoom.net/javalayer/javalayer.html)
