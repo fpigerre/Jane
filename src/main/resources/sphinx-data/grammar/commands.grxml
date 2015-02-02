@@ -39,35 +39,41 @@
     </rule>
 
     <rule id="locations">
-        <one-of>
-            <item>US</item>
-            <item>America</item>
-            <item>United States</item>
-            <item>UK</item>
-            <item>United Kingdom</item>
-            <item>Australia</item>
-            <item>France</item>
-            <item>Singapore</item>
-            <item>China</item>
-            <item>Japan</item>
-        </one-of>
+        <item repeat="1-">
+            <one-of>
+                <item>US</item>
+                <item>America</item>
+                <item>United States</item>
+                <item>UK</item>
+                <item>United Kingdom</item>
+                <item>Australia</item>
+                <item>France</item>
+                <item>Singapore</item>
+                <item>China</item>
+                <item>Japan</item>
+            </one-of>
+        </item>
     </rule>
 
     <rule id="modules">
-        <one-of>
-            <item>twitter</item>
-            <item>github</item>
-            <item>google</item>
-            <item>time</item>
-        </one-of>
+        <item repeat="1-">
+            <one-of>
+                <item>twitter</item>
+                <item>github</item>
+                <item>google</item>
+                <item>time</item>
+            </one-of>
+        </item>
     </rule>
 
     <rule id="names">
-        <one-of weight="3">jane</one-of>
-        <one-of>jarvis</one-of>
-        <one-of>carl</one-of>
-        <one-of>ben</one-of>
-        <one-of>james</one-of>
-        <one-of>john</one-of>
+        <item repeat="1-">
+            <one-of weight="3">jane</one-of>
+            <one-of>jarvis</one-of>
+            <one-of>carl</one-of>
+            <one-of>ben</one-of>
+            <one-of>james</one-of>
+            <one-of>john</one-of>
+        </item>
     </rule>
 </grammar>
