@@ -1,6 +1,5 @@
 package io.github.psgs.jane;
 
-import edu.cmu.sphinx.api.Configuration;
 import io.github.psgs.jane.interfaces.SystemTrayIcon;
 import io.github.psgs.jane.interfaces.TwitterPopup;
 import io.github.psgs.jane.utilities.*;
@@ -44,8 +43,9 @@ public class Jane {
         initiateFiles();
         refreshTwitterKeys();
         if (BrowserUtils.isConnected()) {
+
+            // If consumer keys have been loaded, but not tokens, initiate a Twitter authentication
             try {
-                // If consumer keys have been loaded, but not tokens, initiate a Twitter authentication
                 if (consumerKey != null && consumerSecret != null && (!validAccessToken || !validAccessTokenSecret)) {
                     authenticateTwitter();
                 } else if (consumerKey != null && consumerSecret != null && validAccessToken && validAccessTokenSecret) {
@@ -56,31 +56,28 @@ public class Jane {
                 System.out.println("An error occurred while trying to authenticate with Twitter!");
                 ex.printStackTrace();
             }
+
+            // Welcome the user and load up modules
             try {
-                // Welcome the user and load up modules
                 Properties properties = new Properties();
                 properties.load(new FileInputStream("settings.properties"));
                 System.out.println("Hello " + properties.getProperty("username") + ", I'm Jane!");
                 AudioUtils.talk("Hello " + properties.getProperty("username") + ", I'm Jane!");
                 System.out.println("Loading background modules...");
-                ModuleHandler.runBackgroundModules(args);
             } catch (IOException ex) {
                 System.out.println("An error occurred while trying to load a settings property!");
             }
+
+            // Start ambient listening
             try {
                 System.out.println("Ambient listening started!");
                 AmbientListener.ambientListening();
-            } catch (ArrayIndexOutOfBoundsException ex) {
-                System.err.println("My FLAC encoder has crashed! This is due to a bug that is currently out of my control.");
-            } catch (Exception ex) {
-                if (!ex.toString().contains("ArrayIndexOutofBoundsException")) {
-                    ex.printStackTrace();
-                } else {
-                    System.err.println("My FLAC encoder has crashed! This is due to a bug that is currently out of my control.");
-                }
+            } catch (IOException ex) {
+                System.err.println("It looks like an error has occurred whilst attempting to recognize voice commands...");
+                ex.printStackTrace();
             }
         } else {
-            // If no internet connection is present, TTS may not be possible
+            // If no internet connection is present, TTS and voice recognition may not be possible
             System.err.println("==============================");
             System.err.println("No connection can be found!");
             System.err.println("Some features may be disabled!");
@@ -90,16 +87,9 @@ public class Jane {
     }
 
     /**
-     * Safely shuts down Jane and securely deletes audio sample files
+     * Safely shuts down Jane
      */
     public static void exit() {
-        try {
-            File audioCapture = new File("AudioCapture.wav");
-            SecurityUtils.secureDelete(audioCapture);
-            audioCapture.delete();
-        } catch (IOException ex) {
-            System.err.println("An error may have occurred while deleting the Audio Capture file!");
-        }
         System.exit(1);
     }
 

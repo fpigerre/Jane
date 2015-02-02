@@ -9,6 +9,7 @@ public class SecurityUtils {
 
     /**
      * Securely deletes a file. When the program is closed, no remaining data should expose the contents of the file
+     *
      * @param file A file to delete
      * @throws IOException
      */

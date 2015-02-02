@@ -25,6 +25,7 @@ public class StringUtils {
 
     /**
      * Removes a URL from a string
+     *
      * @param rawString The string to remove a URL from
      * @return The original string that doesn't contain any URLs
      */
@@ -43,6 +44,7 @@ public class StringUtils {
 
     /**
      * Attaches a suffix to a number, for example, "second" would equal "2nd", when "2" is submitted
+     *
      * @param number The number to attach a suffix to
      * @return A string that includes the number and the attached suffix
      */
@@ -64,7 +66,8 @@ public class StringUtils {
 
     /**
      * Removes a set of strings, defined in an array, from a string
-     * @param input The string to remove values from
+     *
+     * @param input   The string to remove values from
      * @param strings The strings be removed from the input
      * @return A string that doesn't contain any string defined in the array
      */

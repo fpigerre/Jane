@@ -12,6 +12,7 @@ public class JsonUtils {
 
     /**
      * Returns data as a String from a URL
+     *
      * @param urlString A URL to fetch data from
      * @return Data, formatted as a String
      * @throws Exception
@@ -36,6 +37,7 @@ public class JsonUtils {
 
     /**
      * Pulls JSON data from a URL and formats it as a Page object
+     *
      * @param url A URL to fetch JSON data from
      * @return A Page object
      * @throws Exception
@@ -48,6 +50,7 @@ public class JsonUtils {
 
     /**
      * Returns a list of Job objects from a URL that contains JSON data
+     *
      * @param url A URL to fetch JSON data from
      * @return An ArrayList of Job objects
      * @throws Exception

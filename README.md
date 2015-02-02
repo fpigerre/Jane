@@ -59,5 +59,6 @@ Some dependencies are removed from production code, as they're only required by 
 #### Principles
 
 Jane focuses on the user. Development of Jane is user-oriented. She must be able to be useful to anybody.
-Jane uses minimum bandwidth and CPU and can function under tough conditions. She loves playing survival games.
-Jane's easy for anybody to use; she can be comprehensively secured, allowing for total secure and anonymous use.
+Jane uses minimum bandwidth and CPU, and can function under tough conditions. She loves playing survival games.
+Jane can be easily used by anybody; she can be comprehensively secured, allowing for total secure and anonymous use.
+If possible, Jane prefers to function independently from the internet.

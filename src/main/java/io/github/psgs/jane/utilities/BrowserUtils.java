@@ -11,6 +11,7 @@ public class BrowserUtils {
 
     /**
      * Opens a page in a Web Browser
+     *
      * @param uri The URI to open in a Browser
      */
     public static void openWebpage(URI uri) {
@@ -26,6 +27,7 @@ public class BrowserUtils {
 
     /**
      * Opens a page in a Web Browser
+     *
      * @param url The URL to open in a Browser
      */
     public static void openWebpage(URL url) {
@@ -38,6 +40,7 @@ public class BrowserUtils {
 
     /**
      * Returns whether the host system is connected to the internet
+     *
      * @return Whether the host system is connected to the internet
      */
     public static boolean isConnected() {

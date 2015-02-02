@@ -11,6 +11,7 @@ public class Settings {
 
     /**
      * Loads data from a settings.properties file
+     *
      * @throws IOException
      */
     public static void loadConfiguration() throws IOException {
@@ -24,7 +25,8 @@ public class Settings {
 
     /**
      * Stores data in a key-value pair to settings.properties file
-     * @param key The key to store data to
+     *
+     * @param key  The key to store data to
      * @param data The value to store with the key
      */
     public static void storeData(String key, String data) {

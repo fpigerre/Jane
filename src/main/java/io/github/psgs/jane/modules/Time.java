@@ -7,22 +7,12 @@ import io.github.psgs.jane.utilities.TimeUtils;
 import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Time extends Module {
 
-    public static List<String> acceptedInput = new ArrayList<String>();
-
     public Time() {
-        super("Time", "Tells the user the current time", 0, 4);
-        acceptedInput.add("get");
-        acceptedInput.add("whats");
-        acceptedInput.add("what");
-        acceptedInput.add("what's");
-        acceptedInput.add("is");
-        acceptedInput.add("time");
+        super("Time", "Tells the user the current time", 0);
     }
 
     /**
@@ -46,10 +36,5 @@ public class Time extends Module {
         } catch (FileNotFoundException ex) {
             System.out.println("A result couldn't be spoken!!");
         }
-    }
-
-    @Override
-    public List<String> getAcceptedInput() {
-        return acceptedInput;
     }
 }

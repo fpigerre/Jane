@@ -6,28 +6,20 @@ import io.github.psgs.jane.utilities.StringUtils;
 import twitter4j.*;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class ReadTweet extends Module {
 
-    public static List<String> acceptedInput = new ArrayList<String>();
     static Twitter twitter = TwitterFactory.getSingleton();
 
     public ReadTweet() {
-        super("ReadTweet", "Reads/displays a tweet", 0, 4);
-        acceptedInput.add("get");
-        acceptedInput.add("a");
-        acceptedInput.add("tweet");
-        acceptedInput.add("by");
-        acceptedInput.add("read");
-        acceptedInput.add("recent");
+        super("ReadTweet", "Reads/displays a tweet", 0);
     }
 
     /**
      * Reads a Tweet from a Tweet ID number
-     * @param tweetId The ID of the tweet to read
+     *
+     * @param tweetId     The ID of the tweet to read
      * @param textCommand An unused boolean to determine that the Tweet is being read using an ID number
      */
     public static void execute(String tweetId, boolean textCommand) {
@@ -66,6 +58,7 @@ public class ReadTweet extends Module {
 
     /**
      * Reads a Tweet from a Status object
+     *
      * @param status A Status object
      */
     public static void execute(Status status) {
@@ -92,19 +85,16 @@ public class ReadTweet extends Module {
 
     /**
      * Returns the ReadTweet module's Twitter object instance
+     *
      * @return An instance of a Twitter object
      */
     public static Twitter getTwitterInstance() {
         return twitter;
     }
 
-    @Override
-    public List<String> getAcceptedInput() {
-        return acceptedInput;
-    }
-
     /**
      * Reads a Tweet from an Author
+     *
      * @param author An author's username (without an @ symbol)
      */
     public static void execute(String author) {

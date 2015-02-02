@@ -4,6 +4,7 @@ public class TimeUtils {
 
     /**
      * Gets the name of a month from the numerical value of the month
+     *
      * @param month The numerical value of a month
      * @return The name of the month
      */
@@ -41,6 +42,7 @@ public class TimeUtils {
 
     /**
      * Get the numerical value of a month (1-12) from the name of a month
+     *
      * @param month The name of a month
      * @return The numerical value of the month
      */

@@ -23,6 +23,7 @@ public class TwitterPopup extends javax.swing.JFrame {
     private javax.swing.JTextField pinField;
     private javax.swing.JLabel pinLabel;
     private javax.swing.JSeparator separator;
+
     /**
      * Creates new form TwitterPopup
      */

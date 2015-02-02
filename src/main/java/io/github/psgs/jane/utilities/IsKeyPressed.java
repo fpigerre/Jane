@@ -8,6 +8,7 @@ public class IsKeyPressed {
 
     /**
      * Returns whether the Tilde '`' key is pressed
+     *
      * @return Whether the tilde key is pressed
      */
     public static boolean isTildePressed() {

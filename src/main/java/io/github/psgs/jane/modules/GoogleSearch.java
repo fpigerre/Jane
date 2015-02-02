@@ -8,17 +8,11 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GoogleSearch extends Module {
 
-    public static List<String> acceptedInput = new ArrayList<String>();
-
     public GoogleSearch() {
-        super("Google Search", "A module that returns Google results", 3, 1);
-        acceptedInput.add("search");
-        acceptedInput.add("google");
+        super("Google Search", "A module that returns Google results", 3);
     }
 
     /**
@@ -54,10 +48,5 @@ public class GoogleSearch extends Module {
             System.err.println("An error occurred while attempting to search Google!");
             System.out.println(ex.getMessage());
         }
-    }
-
-    @Override
-    public List<String> getAcceptedInput() {
-        return acceptedInput;
     }
 }

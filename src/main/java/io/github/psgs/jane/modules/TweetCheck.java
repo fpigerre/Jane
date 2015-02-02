@@ -8,7 +8,6 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -17,23 +16,16 @@ import java.util.concurrent.TimeUnit;
 
 public class TweetCheck extends Module {
 
-    public static List<String> acceptedInput = new ArrayList<String>();
     static Twitter twitter = ReadTweet.getTwitterInstance();
 
+    // TODO: Pass arguments (particular accounts) to module from speech
     public TweetCheck() {
-        super("TweetCheck", "Reads tweets from a hardcoded list of accounts", 1, 3);
-        acceptedInput.add("get");
-        acceptedInput.add("read");
-        acceptedInput.add("breaking");
-        acceptedInput.add("news");
-        acceptedInput.add("afp");
-        acceptedInput.add("agence");
-        acceptedInput.add("france");
-        acceptedInput.add("presse");
+        super("TweetCheck", "Reads tweets from a hardcoded list of accounts", 1);
     }
 
     /**
      * Schedules a task to check for tweets every 5 minutes
+     *
      * @param args System arguments
      */
     public static void main(String[] args) {
@@ -80,10 +72,5 @@ public class TweetCheck extends Module {
                 if (BrowserUtils.isConnected()) ex.printStackTrace();
             }
         }
-    }
-
-    @Override
-    public List<String> getAcceptedInput() {
-        return acceptedInput;
     }
 }

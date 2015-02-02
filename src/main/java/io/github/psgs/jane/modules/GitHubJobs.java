@@ -5,26 +5,19 @@ import io.github.psgs.jane.utilities.JsonUtils;
 import io.github.psgs.jane.utilities.Settings;
 import io.github.psgs.jane.utilities.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class GitHubJobs extends Module {
 
-    public static List<String> acceptedInput = new ArrayList<String>();
-
     public GitHubJobs() {
-        super("GitHubJobs", "Returns a list of applicable GitHub Jobs", 0, 3);
-        acceptedInput.add("github");
-        acceptedInput.add("jobs");
-        acceptedInput.add("job");
-        acceptedInput.add("get");
+        super("GitHubJobs", "Returns a list of applicable GitHub Jobs", 0);
     }
 
     /**
      * Schedules a task to check for new jobs every 5 minutes
+     *
      * @param args System arguments
      */
     public static void main(String[] args) {
@@ -44,28 +37,28 @@ public class GitHubJobs extends Module {
 
     /**
      * Checks for new GitHub jobs matching a certain criteria
-     * @param rawInput Criteria to restrict the job search to
+     *
+     * @param input Criteria to restrict the job search to
      */
-    public static void execute(String rawInput) {
-        String validatedInput = StringUtils.stripStringFromArray(rawInput, (String[]) acceptedInput.toArray());
-        validatedInput.replace("jane", "");
-        validatedInput.replace(".", "");
+    public static void execute(String input) {
+
+        // TODO: Pass location from voice to module
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("http://jobs.github.com/positions.json?");
-        if (validatedInput.contains("location") || validatedInput.contains("near") || validatedInput.contains("at")) {
-            validatedInput.replace(" location ", "");
-            validatedInput.replace(" near ", "");
-            validatedInput.replace(" at ", "");
-            stringBuilder.append("&location=" + StringUtils.stripStringFromArray(validatedInput, StringUtils.nonDeterministicWords));
+        if (input.contains("location") || input.contains("near") || input.contains("at")) {
+            input.replace(" location ", "");
+            input.replace(" near ", "");
+            input.replace(" at ", "");
+            stringBuilder.append("&location=" + StringUtils.stripStringFromArray(input, StringUtils.nonDeterministicWords));
         }
-        if (validatedInput.contains("full") || validatedInput.contains("time")) {
-            validatedInput.replace(" full time ", "");
-            validatedInput.replace(" full ", "");
-            validatedInput.replace(" time ", "");
+        if (input.contains("full") || input.contains("time")) {
+            input.replace(" full time ", "");
+            input.replace(" full ", "");
+            input.replace(" time ", "");
             stringBuilder.append("&full_time=true");
         }
-        stringBuilder.append("&description=" + validatedInput);
+        stringBuilder.append("&description=" + input);
 
         try {
             for (JsonUtils.Job job : JsonUtils.getJobList(stringBuilder.toString())) {
@@ -87,10 +80,5 @@ public class GitHubJobs extends Module {
         } catch (Exception ex) {
             System.out.println("An error occurred while trying to fetch JSON data!");
         }
-    }
-
-    @Override
-    public List<String> getAcceptedInput() {
-        return acceptedInput;
     }
 }

@@ -24,6 +24,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel logoPanel;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JButton settingsButton;
+
     /**
      * Creates new form GUI
      */
